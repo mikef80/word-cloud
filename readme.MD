@@ -1,5 +1,9 @@
 # Wordcloud
 
-It took a while to figure out how to omplement this, so I want to save it for future reference.
+This is a basic implementation of the WordCloud functionality from D3.JS.
 
-I'd like to make it a dynamic react app, so will try and figure that out next!
+Due to the last of maintained React packages, this uses a Vanilla approach to loading the packages.
+
+As with everything, this is a work in progress, for which I have big ideas, but will probably struggle to fiund the time!
+
+<img src='/WordCloud-screenshot.jpg' />
