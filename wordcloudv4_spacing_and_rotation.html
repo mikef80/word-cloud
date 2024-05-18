@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3.js Word Cloud Implementation</title>
+  </head>
+  <body>
+    <!-- COPY FROM HERE -->
+
+    <style>
+      .word-cloud {
+        margin: 0 auto;
+        width: 1200px;
+        height: 600px;
+      }
+    </style>
+    <div class="word-cloud"></div>
+
+    <script>
+      function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+
+      loadScript("https://d3js.org/d3.v7.min.js").then(() =>
+        loadScript("https://unpkg.com/d3-cloud/build/d3.layout.cloud.js").then(() => {
+          // Example text
+          const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis vehicula quam. Nunc ultrices ante in dolor mattis, nec dapibus elit consequat. Phasellus congue elementum enim. Aenean elementum lacus sed pellentesque mollis. Donec et aliquam lacus. In at viverra libero. Maecenas non semper libero. Phasellus quis mollis ligula. Curabitur ullamcorper augue eget massa volutpat, sed viverra sem pretium. Nullam vestibulum consectetur accumsan. Morbi sollicitudin metus maximus tellus auctor blandit. Pellentesque laoreet erat ac auctor vestibulum. Suspendisse rutrum tincidunt felis eget hendrerit. Vivamus et fermentum tortor. Integer maximus erat a ultricies egestas. Vestibulum quis hendrerit lorem, in vulputate augue. Donec congue iaculis lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus tempor, neque in laoreet malesuada, mi nunc condimentum enim, eleifend pharetra nunc erat a leo. Aliquam consectetur ornare sem at posuere. In convallis tortor eu erat lacinia posuere. Phasellus iaculis efficitur pulvinar. Vestibulum eleifend interdum risus, et rutrum erat consequat at. `;
+
+          // Function to compute word frequencies
+          function computeWordFrequencies(text) {
+            const words = text.split(/\W+/).filter((word) => word.length > 0);
+            const frequency = {};
+            words.forEach((word) => {
+              const lower = word.toLowerCase();
+              frequency[lower] = (frequency[lower] || 0) + 1;
+            });
+            return Object.entries(frequency).map(([word, size]) => ({ text: word, size }));
+          }
+
+          // Prepare the word data
+          const words = computeWordFrequencies(text);
+
+          // Set the dimensions of the word cloud
+          const width = 1200;
+          const height = 600;
+
+          // Create the layout for the word cloud
+          const layout = d3.layout
+            .cloud()
+            .size([width, height])
+            .words(words)
+            .padding(0.5)
+            .rotate(() => 0)
+            .font("Open Sans")
+            .fontSize((d) => d.size * 20) // Adjust the multiplication factor to scale font sizes
+            .on("end", draw);
+
+          layout.start();
+
+          // Draw function to render the word cloud
+          function draw(words) {
+            d3.select(".word-cloud")
+              .append("svg")
+              .attr("width", width)
+              .attr("height", height)
+              .append("g")
+              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+              .selectAll("text")
+              .data(words)
+              .enter()
+              .append("text")
+              .style("font-size", (d) => d.size + "px")
+              .style("font-family", "Open Sans")
+              .style("fill", () => "#254A98")
+              .attr("text-anchor", "middle")
+              .attr(
+                "transform",
+                (d) => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"
+              )
+              .text((d) => d.text)
+              .on("click", function (event, d) {
+                console.log(event);
+                alert("You clicked on: " + d.text);
+              })
+              .on("mouseover", function (event, d) {
+                d3.select(this)
+                  .transition()
+                  .duration(400)
+                  .style("font-size", d.size * 1.1 + "px")
+                  .style("fill", "#3390E7");
+              })
+              .on("mouseout", function (event, d) {
+                d3.select(this)
+                  .transition()
+                  .duration(400)
+                  .style("font-size", d.size + "px")
+                  .style("fill", "#254A98");
+              })
+              .style("cursor", "pointer");
+          }
+        })
+      );
+    </script>
+
+    <!-- COPY TO HERE -->
+  </body>
+</html>
