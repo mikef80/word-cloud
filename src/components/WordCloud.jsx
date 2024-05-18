@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import loadedScripts from "../utils/loadScripts.js";
 import computeWordFrequencies from "../utils/computeWordFrequencies.js";
 
-const WordCloud = ({ text }) => {
+const WordCloud = ({ text, rotate }) => {
   const [scriptsLoaded, setScriptsLoaded] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 1200, height: 600 });
 
@@ -26,7 +26,8 @@ const WordCloud = ({ text }) => {
       .size([dimensions.width, dimensions.height])
       .words(words)
       .padding(2)
-      .rotate(() => 0)
+      .rotate(rotate ? () => (Math.random() > 0.5 ? 90 : 0) : () => 0)
+      // .rotate(() => (Math.random() > 0.5 ? 90 : 0))
       .fontSize((d) => d.size * 20)
       .on("end", draw);
 
@@ -34,15 +35,15 @@ const WordCloud = ({ text }) => {
 
     // Draw function to render the word cloud
     function draw(words) {
-      // Clear any previous word cloud
       d3.select(".word-cloud").select("svg").remove();
-
-      const svg = d3.select(".word-cloud")
+      const svg = d3
+        .select(".word-cloud")
         .append("svg")
         .attr("width", dimensions.width)
         .attr("height", dimensions.height);
 
-      const g = svg.append("g")
+      const g = svg
+        .append("g")
         .attr("transform", `translate(${dimensions.width / 2}, ${dimensions.height / 2})`);
 
       g.selectAll("text")
@@ -55,8 +56,9 @@ const WordCloud = ({ text }) => {
         .attr("transform", (d) => `translate(${d.x}, ${d.y})rotate(${d.rotate})`)
         .text((d) => d.text)
         .on("click", (event, d) => {
-          console.log(event);
-          alert(`You clicked on: ${d.text}`);
+          console.log(d.size / 20);
+          alert(`You clicked on: ${d.text}
+          Occurences: ${d.size / 20}`);
         })
         .on("mouseover", function (event, d) {
           d3.select(this)
@@ -74,9 +76,9 @@ const WordCloud = ({ text }) => {
         })
         .style("cursor", "pointer");
     }
-  }, [scriptsLoaded, text, dimensions]);
+  }, [scriptsLoaded, text, dimensions, rotate]);
 
-  return <div className="word-cloud"></div>;
+  return <div className='word-cloud flex'></div>;
 };
 
 export default WordCloud;
