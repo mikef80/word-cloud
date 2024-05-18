@@ -76,7 +76,7 @@ const WordCloud = ({ text, rotate }) => {
     }
   }, [scriptsLoaded, text, dimensions, rotate]);
 
-  return <div className='word-cloud flex'></div>;
+  return <div className='word-cloud flex p-2'></div>;
 };
 
 export default WordCloud;
