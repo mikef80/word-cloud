@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet" />
     <title>D3.js Word Cloud Implementation</title>
   </head>
   <body>
@@ -13,6 +18,14 @@
         margin: 0 auto;
         width: 1200px;
         height: 600px;
+      }
+
+      * {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        font-variation-settings: "slnt" 0;
       }
     </style>
     <div class="word-cloud"></div>
@@ -56,9 +69,9 @@
             .cloud()
             .size([width, height])
             .words(words)
-            .padding(0.5)
+            .padding(2)
             .rotate(() => 0)
-            .font("Open Sans")
+            // .font("Open Sans")
             .fontSize((d) => d.size * 20) // Adjust the multiplication factor to scale font sizes
             .on("end", draw);
 
@@ -77,8 +90,9 @@
               .enter()
               .append("text")
               .style("font-size", (d) => d.size + "px")
-              .style("font-family", "Open Sans")
-              .style("fill", () => "#254A98")
+              // .style("font-family", "Open Sans")
+              // .style("fill", () => "#254A98")
+              .style("fill", () => "black")
               .attr("text-anchor", "middle")
               .attr(
                 "transform",
@@ -101,7 +115,7 @@
                   .transition()
                   .duration(400)
                   .style("font-size", d.size + "px")
-                  .style("fill", "#254A98");
+                  .style("fill", "black");
               })
               .style("cursor", "pointer");
           }
