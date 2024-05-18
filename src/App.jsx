@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className='flex flex-col items-center'>
-      <TextInput setText={setText} setRotate={setRotate} />
+      <TextInput text={text} setText={setText} setRotate={setRotate} />
       <WordCloud text={text} rotate={rotate} />
     </div>
   );

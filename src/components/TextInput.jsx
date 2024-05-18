@@ -1,4 +1,8 @@
-const TextInput = ({ setText, setRotate }) => {
+import { useEffect, useState } from "react";
+
+const TextInput = ({ text, setText, setRotate }) => {
+  const [wordCount, setWordCount] = useState(0);
+
   const updateText = (e) => {
     setText(e.target.value);
   };
@@ -6,6 +10,11 @@ const TextInput = ({ setText, setRotate }) => {
   const toggleLayout = () => {
     setRotate((layout) => !layout);
   };
+
+  useEffect(() => {
+    const words = text.split(" ");
+    setWordCount(words.length);
+  }, [text]);
 
   return (
     <div className='p-2 flex flex-col'>
@@ -20,7 +29,14 @@ const TextInput = ({ setText, setRotate }) => {
         className='border-gray-400 border-2 rounded p-2 my-2 resize'
         placeholder='Lorem ipsum dolor sit amet...'
       />
-      <button onClick={() => toggleLayout()} className="border-2 border-grey-200 w-max py-1 px-2 rounded-lg hover:bg-gray-200">Toggle layout</button>
+      <div className='flex justify-between items-center'>
+        <button
+          onClick={() => toggleLayout()}
+          className='border-2 border-grey-200 w-max py-1 px-2 rounded-lg hover:bg-gray-200'>
+          Toggle layout
+        </button>
+        <p>Word count: {wordCount}</p>
+      </div>
     </div>
   );
 };
