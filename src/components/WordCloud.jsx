@@ -76,6 +76,10 @@ const WordCloud = ({ text, rotate }) => {
     }
   }, [scriptsLoaded, text, dimensions, rotate]);
 
+  if (!scriptsLoaded) {
+    return <div className="absolute top-1/2">Loading...</div>;
+  }
+
   return <div className='word-cloud flex p-2'></div>;
 };
 
