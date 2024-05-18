@@ -26,8 +26,7 @@ const WordCloud = ({ text, rotate }) => {
       .size([dimensions.width, dimensions.height])
       .words(words)
       .padding(2)
-      .rotate(rotate ? () => (Math.random() > 0.5 ? 90 : 0) : () => 0)
-      // .rotate(() => (Math.random() > 0.5 ? 90 : 0))
+      .rotate(() => (rotate ? (Math.random() > 0.5 ? 90 : 0) : 0))
       .fontSize((d) => d.size * 20)
       .on("end", draw);
 
