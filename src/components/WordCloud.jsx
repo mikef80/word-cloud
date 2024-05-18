@@ -56,7 +56,6 @@ const WordCloud = ({ text, rotate }) => {
         .attr("transform", (d) => `translate(${d.x}, ${d.y})rotate(${d.rotate})`)
         .text((d) => d.text)
         .on("click", (event, d) => {
-          console.log(d.size / 20);
           alert(`You clicked on: ${d.text}
           Occurences: ${d.size / 20}`);
         })
