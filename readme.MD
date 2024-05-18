@@ -1,8 +1,9 @@
-# React + Vite
+# Wordcloud
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a basic implementation of the WordCloud functionality from D3.JS.
 
-Currently, two official plugins are available:
+Due to the last of maintained React packages, this uses a Vanilla approach to loading the packages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+As with everything, this is a work in progress, for which I have big ideas, but will probably struggle to fiund the time!
+
+<img src='/WordCloud-screenshot.jpg' />

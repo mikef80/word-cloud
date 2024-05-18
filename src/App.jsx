@@ -1,35 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import WordCloud from "./components/WordCloud";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const [text, setText] = useState(
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis vehicula quam. Nunc ultrices ante in dolor mattis, nec dapibus elit consequat. Phasellus congue elementum enim. Aenean elementum lacus sed pellentesque mollis. Donec et aliquam lacus. In at viverra libero. Maecenas non semper libero. Phasellus quis mollis ligula. Curabitur ullamcorper augue eget massa volutpat, sed viverra sem pretium. Nullam vestibulum consectetur accumsan. Morbi sollicitudin metus maximus tellus auctor blandit. Pellentesque laoreet erat ac auctor vestibulum. Suspendisse rutrum tincidunt felis eget hendrerit. Vivamus et fermentum tortor. Integer maximus erat a ultricies egestas. Vestibulum quis hendrerit lorem, in vulputate augue. Donec congue iaculis lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus tempor, neque in laoreet malesuada, mi nunc condimentum enim, eleifend pharetra nunc erat a leo. Aliquam consectetur ornare sem at posuere. In convallis tortor eu erat lacinia posuere. Phasellus iaculis efficitur pulvinar. Vestibulum eleifend interdum risus, et rutrum erat consequat at. `
+  );
+  return <WordCloud text={text} />;
 }
 
-export default App
+export default App;
