@@ -27,7 +27,7 @@ const WordCloud = ({ text, rotate }) => {
       .words(words)
       .padding(2)
       .rotate(() => (rotate ? (Math.random() > 0.5 ? 90 : 0) : 0))
-      .fontSize((d) => d.size * 20)
+      .fontSize((d) => d.size * 15)
       .on("end", draw);
 
     layout.start();
@@ -56,7 +56,7 @@ const WordCloud = ({ text, rotate }) => {
         .text((d) => d.text)
         .on("click", (event, d) => {
           alert(`You clicked on: ${d.text}
-          Occurences: ${d.size / 20}`);
+          Occurences: ${d.size / 15}`);
         })
         .on("mouseover", function (event, d) {
           d3.select(this)
@@ -77,7 +77,7 @@ const WordCloud = ({ text, rotate }) => {
   }, [scriptsLoaded, text, dimensions, rotate]);
 
   if (!scriptsLoaded) {
-    return <div className="absolute top-1/2">Loading...</div>;
+    return <div className='absolute top-1/2'>Loading...</div>;
   }
 
   return <div className='word-cloud flex p-2'></div>;
