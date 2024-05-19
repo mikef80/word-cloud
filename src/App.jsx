@@ -1,11 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WordCloud from "./components/WordCloud";
 import TextInput from "./components/TextInput";
 
 function App() {
   const [text, setText] = useState(
-    `We all need motivation and encouragement from time to time, and if you don't need either of these at the moment, you certainly have friends or family who could benefit from both. If you're looking for some motivational quotes or inspirational quotes to positively influence your day, you've come to the right place. This is exactly what the Random Motivational Quotes Generator is able to do. With over 1000 motivational quotes in the database, you're sure to find more than a few that will inspire you and help uplift your day.
-    The best part of using this motivational generator is how simple it is to use. You just need to indicate how many motivational quotes you'd like to see at one time and then use your mouse to click the generate button. You should see a list of motivational and inspirational quotes appear and you'll have all the words you need to help make your day as positive as it can be. For those who would like a list of motivational quotes, you can create one by indicating how many inspirational quotes you'd like to see at one time.`
+    `Now, this is a story all about how
+    My life got flipped-turned upside down
+    And I'd like to take a minute
+    Just sit right there
+    I'll tell you how I became the prince of a town called Bel-Air
+    In West Philadelphia born and raised
+    On the playground was where I spent most of my days
+    Chillin' out, maxin', relaxin', all cool
+    And all shootin' some b-ball outside of the school
+    When a couple of guys who were up to no good
+    Started making trouble in my neighborhood
+    I got in one little fight and my mom got scared
+    She said, "You're movin' with your auntie and uncle in Bel-Air"
+    I begged and pleaded with her day after day
+    But she packed my suitcase and sent me on my way
+    She gave me a kiss and then she gave me my ticket
+    I put my Walkman on and said, "I might as well kick it"
+    First class, yo this is bad
+    Drinking orange juice out of a champagne glass
+    Is this what the people of Bel-Air living like?
+    Hmm, this might be alright
+    But wait, I hear they're prissy, bourgeois, all that
+    Is this the type of place that they just send this cool cat?
+    I don't think so
+    I'll see when I get there
+    I hope they're prepared for the prince of Bel-Air
+    Well, the plane landed and when I came out
+    There was a dude who looked like a cop standing there with my name out
+    I ain't trying to get arrested yet, I just got here
+    I sprang with the quickness like lightning, disappeared
+    I whistled for a cab and when it came near
+    The license plate said, "Fresh" and it had dice in the mirror
+    If anything I could say that this cab was rare
+    But I thought "Nah, forget it, yo, holmes to Bel Air"
+    I pulled up to the house about seven or eight
+    And I yelled to the cabbie, "Yo holmes, smell ya later"
+    I looked at my kingdom
+    I was finally there
+    To sit on my throne as the prince of Bel-Air`
   );
   const [rotate, setRotate] = useState(false);
 
