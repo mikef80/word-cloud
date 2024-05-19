@@ -1,6 +1,7 @@
 import { useState } from "react";
 import WordCloud from "./components/WordCloud";
 import TextInput from "./components/TextInput";
+import sampleText from './sample-texts/fresh-prince.txt'
 
 function App() {
   const [text, setText] = useState(
@@ -8,6 +9,8 @@ function App() {
     The best part of using this motivational generator is how simple it is to use. You just need to indicate how many motivational quotes you'd like to see at one time and then use your mouse to click the generate button. You should see a list of motivational and inspirational quotes appear and you'll have all the words you need to help make your day as positive as it can be. For those who would like a list of motivational quotes, you can create one by indicating how many inspirational quotes you'd like to see at one time.`
   );
   const [rotate, setRotate] = useState(false);
+
+  console.log(sampleText);
 
   return (
     <div className='flex flex-col items-center'>
