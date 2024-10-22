@@ -27,7 +27,7 @@ const TextInput = ({ text, setText, setRotate }) => {
         cols={50}
         onChange={(e) => updateText(e)}
         className='border-gray-400 border-2 rounded p-2 my-2 resize'
-        placeholder='Lorem ipsum dolor sit amet...'
+        placeholder='Is this the real life, is this just fantasy...'
       />
       <div className='flex justify-between items-center'>
         <button
