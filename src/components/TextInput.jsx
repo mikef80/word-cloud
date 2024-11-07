@@ -16,6 +16,8 @@ const TextInput = ({ text, setText, setRotate }) => {
     const words = text.split(" ");
 
     const wordsWithoutEmptyQuotes = words.filter((word) => word !== "");
+    console.log(wordsWithoutEmptyQuotes);
+    
 
     setWordCount(wordsWithoutEmptyQuotes.length);    
     setUniqueWordCount([...new Set(wordsWithoutEmptyQuotes)].length);
