@@ -13,14 +13,11 @@ const TextInput = ({ text, setText, setRotate }) => {
   };
 
   useEffect(() => {
-    const newText = text
+    const words = text
       .replace(/[\r\n]+/g, " ")
       .replace(/\,/g, "")
-      .replace(/\'/g, "");
-
-    const words = newText.split(" ");
-
-    const wordsWithoutEmptyQuotes = words.filter((word) => word !== "");
+      .replace(/\'/g, "")
+      .split(" ");
 
     setWordCount(words.length);
     setUniqueWordCount([...new Set(words)].length);
