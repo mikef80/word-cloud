@@ -13,7 +13,10 @@ const TextInput = ({ text, setText, setRotate }) => {
 
   useEffect(() => {
     const words = text.split(" ");
-    setWordCount(words.length);
+
+    const wordsWithoutEmptyQuotes = words.filter((word) => word !== "");
+
+    setWordCount(wordsWithoutEmptyQuotes.length);
   }, [text]);
 
   return (
@@ -27,13 +30,34 @@ const TextInput = ({ text, setText, setRotate }) => {
         cols={50}
         onChange={(e) => updateText(e)}
         className='border-gray-400 border-2 rounded p-2 my-2 resize'
-        placeholder='Is this the real life, is this just fantasy...'
+        placeholder='Enter text here'
+        value={text}
       />
       <div className='flex justify-between items-center'>
         <button
           onClick={() => toggleLayout()}
           className='border-2 border-grey-200 w-max py-1 px-2 rounded-lg hover:bg-gray-200'>
           Toggle layout
+        </button>
+        <button
+          onClick={() => {
+            const fetchData = async () => {
+              const res = await fetch("/bohemian-rhapsody.txt");
+              const resText = await res.text();
+              setText(resText);
+            };
+
+            fetchData();
+          }}
+          className='text-white border-2 border-grey-200 w-max py-1 px-2 rounded-lg transition-colors duration-150 bg-green-500 focus:shadow-outline hover:bg-green-600'>
+          Reset
+        </button>
+
+        <button
+          onClick={() => setText("")}
+          type='reset'
+          className='text-white border-2 border-grey-200 w-max py-1 px-2 rounded-lg transition-colors duration-150 bg-red-500 focus:shadow-outline hover:bg-red-700'>
+          Clear
         </button>
         <p>Word count: {wordCount}</p>
       </div>
